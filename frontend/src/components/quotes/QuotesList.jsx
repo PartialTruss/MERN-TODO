@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import fetchData from "../../api/quotes";
+import QuotesCard from "./QuotesCard";
 
 const QuotesList = () => {
   const [data, setData] = useState([]);
@@ -23,12 +24,16 @@ const QuotesList = () => {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
-      <ul>
+    <div className="mt-10">
+      <ul className="grid sm:grid-cols-3 gap-3">
+        {/* {data.map((item) => (
+          <li key={item.id}>{item.quote}</li>
+        ))} */}
         {data.map((item) => (
-          <li key={item.id}>{item.name}</li>
+          <QuotesCard key={item.id} author={item.author} quote={item.quote} />
         ))}
       </ul>
+      {/* <QuotesCard /> */}
     </div>
   );
 };

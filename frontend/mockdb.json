@@ -1,0 +1,34 @@
+{
+    "quotes": [
+        {
+            "quote": "The will of man is his happiness.",
+            "author": "Friedrich Schiller",
+            "category": "happiness"
+        },
+        {
+            "quote": "I wish people could acheive what they think would bring them happiness in order for them to realize that thats not really what happiness is.",
+            "author": "Alanis Morissette",
+            "category": "happiness"
+        },
+        {
+            "quote": "So long as we can lose any happiness, we possess some.",
+            "author": "Booth Tarkington",
+            "category": "happiness"
+        },
+        {
+            "quote": "I need, absolutely, to be alone.",
+            "author": "Jeanne Moreau",
+            "category": "alone"
+        },
+        {
+            "quote": "I wanted to be a mechanic. When I was 14 I wanted to quit school and go work on my car. But my dad said Son, you shouldn't do that. You should stay in school until your education is finished, and when you're done, don't make your hobby your job.",
+            "author": "Eric Bana",
+            "category": "car"
+        },
+        {
+            "quote": "Family is conflict and it's something that we all relate to.",
+            "author": "Bill Cosby",
+            "category": "family"
+        }
+    ]
+}
