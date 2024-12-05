@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
+import quotesRoutes from "./routes/quotesRoutes.js"; // Import quotes routes
 import todoRoutes from "./routes/todoRoutes.js";
 
 dotenv.config();
@@ -14,6 +15,7 @@ app.use(cors());
 
 app.use("/api/todos", todoRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/quotes", quotesRoutes); // Use quotes routes
 
 const PORT = 5000;
 app.listen(PORT, () => {

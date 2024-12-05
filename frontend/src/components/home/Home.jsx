@@ -22,7 +22,7 @@ const Home = () => {
   };
 
   return (
-    <div className="mt-10">
+    <div className="mt-10 h-screen">
       <Button
         onClick={handleOpen}
         variant="outlined"
