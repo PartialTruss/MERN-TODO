@@ -9,7 +9,6 @@ import {
   MenuList,
 } from "@mui/material";
 import { useState } from "react";
-import API from "../../api/api";
 import { useTasks } from "../../context/Taskcontext";
 import FilterButton from "../common/FilterButton";
 import LongMenu from "../common/LongMenu";
@@ -19,10 +18,10 @@ import DeleteTask from "./DeleteTask";
 import EditTask from "./EditTask";
 
 const TaskList = () => {
-  const { tasks, loading } = useTasks();
+  const { tasks, loading, updateTaskStatus } = useTasks();
   const [editingTask, setEditingTask] = useState(null);
   const [loadingTaskId, setLoadingTaskId] = useState(null);
-  const [filter, setFilter] = useState("all"); // State for filtering tasks
+  const [filter, setFilter] = useState("all");
 
   const handleEditClick = (task) => {
     setEditingTask(task);
@@ -36,9 +35,7 @@ const TaskList = () => {
     try {
       setLoadingTaskId(taskId);
       const updatedState = !currentState;
-      await API.put(`/todos/${taskId}/completed`, {
-        completed: updatedState,
-      });
+      await updateTaskStatus(taskId, { completed: updatedState });
     } catch (error) {
       console.error("Error updating task status:", error);
     } finally {
