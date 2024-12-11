@@ -2,7 +2,6 @@ import { Add } from "@mui/icons-material";
 import { Box, Button, Container, Modal, TextField } from "@mui/material";
 import { useState } from "react";
 import { useTasks } from "../../context/Taskcontext";
-import LogOut from "../form/LogOut";
 import NoTask from "./NoTask";
 import TaskList from "./TaskList";
 const Home = () => {
@@ -74,7 +73,6 @@ const Home = () => {
         </Container>
       </Modal>
       {tasks.length > 0 ? <TaskList /> : <NoTask />}
-      <LogOut />
     </div>
   );
 };

@@ -22,9 +22,9 @@ router.post("/login", async (req, res) => {
 
     // Generate JWT token
     const token = jwt.sign(
-      { id: user._id, email: user.email }, // Payload
+      { id: user._id, email: user.email, username: user.username }, // Payload
       process.env.JWT_SECRET, // Secret key
-      { expiresIn: "1h" } // Token expiration
+      { expiresIn: "2h" } // Token expiration
     );
 
     res.status(200).json({ message: "Login successful", token });
@@ -49,9 +49,9 @@ router.post("/signup", async (req, res) => {
 
     // Generate JWT token
     const token = jwt.sign(
-      { id: newUser._id, email: newUser.email }, // Payload
+      { id: newUser._id, email: newUser.email, username: newUser.username }, // Payload
       process.env.JWT_SECRET, // Secret key
-      { expiresIn: "1h" } // Token expiration
+      { expiresIn: "2h" } // Token expiration
     );
 
     res.status(201).json({ message: "User created successfully", token });

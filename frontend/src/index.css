@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  src: url("./assets/font/Mouldy Cheese.ttf");
+  font-family: "main";
+}
+
+* {
+  font-family: "main";
+}
+
 .No-Task-Image {
   width: 480px;
   max-width: 100%;
