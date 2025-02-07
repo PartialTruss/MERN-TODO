@@ -35,7 +35,7 @@ const SignupForm = () => {
 
       if (response.status === 201) {
         // toast.success("Sign up successful! Redirecting to login...");
-        setTimeout(() => navigate("/"), 2000); // Redirect after 2 seconds
+        setTimeout(() => navigate("/"), 1000); // Redirect after 2 seconds
       }
     } catch (error) {
       console.error(
@@ -65,7 +65,7 @@ const SignupForm = () => {
             touched,
             isSubmitting,
           }) => (
-            <Form className="w-full flex flex-col gap-5">
+            <Form className="w-full flex flex-col gap-7">
               <AuthInput
                 label="Username"
                 placeholdertext="Enter your username"
@@ -104,8 +104,10 @@ const SignupForm = () => {
                 text={isSubmitting ? "Signing up..." : "Sign Up"}
                 isdisabled={isSubmitting}
               />
-              <section className=" ml-1 text-sm opacity-50 font-semibold">
-                <Link to="/">Already have an account?</Link>
+              <section className=" ml-1 text-sm opacity-50 mb-5 ">
+                <Link to="/">
+                  <p>Already have an account?</p>
+                </Link>
               </section>
             </Form>
           )}

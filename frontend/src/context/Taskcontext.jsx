@@ -1,5 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { addTasks, deleteTask, getTasks, updateTask } from "../api/todo_api";
+import {
+  addTasks,
+  archivedTodo,
+  deleteTask,
+  getTasks,
+  updateTask,
+} from "../api/todo_api";
 
 const TaskContext = createContext();
 
@@ -12,10 +18,10 @@ export const TaskProvider = ({ children }) => {
     loadTasks();
   }, []);
 
-  const loadTasks = async () => {
+  const loadTasks = async (archived = false) => {
     setLoading(true);
     try {
-      const response = await getTasks();
+      const response = await getTasks(archived);
       setTasks(response.data || []);
     } catch (err) {
       console.error("Error loading tasks:", err);
@@ -25,10 +31,10 @@ export const TaskProvider = ({ children }) => {
     }
   };
 
-  const addTask = async (title) => {
+  const addTask = async (title, dueDate, dueTime, description) => {
     try {
-      const response = await addTasks({ title });
-      setTasks([...tasks, response.data]);
+      const response = await addTasks({ title, dueDate, dueTime, description });
+      setTasks((prevTasks) => [...prevTasks, response.data]);
     } catch (err) {
       console.error("Error adding task:", err);
       setError("Failed to add task.");
@@ -37,9 +43,9 @@ export const TaskProvider = ({ children }) => {
 
   const updateTaskStatus = async (id, updatedFields) => {
     try {
-      const response = await updateTask(id, updatedFields); // Pass all updated fields
-      setTasks(
-        tasks.map((task) =>
+      await updateTask(id, updatedFields);
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
           task._id === id ? { ...task, ...updatedFields } : task
         )
       );
@@ -49,10 +55,28 @@ export const TaskProvider = ({ children }) => {
     }
   };
 
+  const updateTaskArchived = async (id, archived) => {
+    try {
+      await archivedTodo(id, archived);
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task._id === id ? { ...task, archived } : task
+        )
+      );
+    } catch (err) {
+      console.error("Error updating archive status:", err);
+      setError("Failed to update archive status.");
+    }
+  };
+
+  const updateTaskOrder = (newOrder) => {
+    setTasks(newOrder);
+  };
+
   const deleteTaskById = async (id) => {
     try {
       await deleteTask(id);
-      setTasks(tasks.filter((task) => task._id !== id));
+      setTasks((prevTasks) => prevTasks.filter((task) => task._id !== id));
     } catch (err) {
       console.error("Error deleting task:", err);
       setError("Failed to delete task.");
@@ -60,7 +84,27 @@ export const TaskProvider = ({ children }) => {
   };
 
   const resetTasks = () => {
-    setTasks([]); // Reset tasks on login
+    setTasks([]);
+  };
+
+  const archiveTask = async (id) => {
+    try {
+      await archivedTodo(id, true); // Archive in the backend
+      await loadTasks(); // Reload fresh data from the backend
+    } catch (err) {
+      console.error("Error archiving task:", err);
+      setError("Failed to archive task.");
+    }
+  };
+
+  const restoreTask = async (id) => {
+    try {
+      await archivedTodo(id, false); // Restore in the backend
+      await loadTasks(); // Reload tasks to reflect changes
+    } catch (err) {
+      console.error("Error restoring task:", err);
+      setError("Failed to restore task.");
+    }
   };
 
   return (
@@ -74,6 +118,11 @@ export const TaskProvider = ({ children }) => {
         deleteTaskById,
         loadTasks,
         resetTasks,
+        updateTaskOrder,
+        updateTaskArchived,
+        archiveTask,
+        restoreTask,
+        setTasks,
       }}
     >
       {children}
@@ -81,5 +130,4 @@ export const TaskProvider = ({ children }) => {
   );
 };
 
-// Custom hook for consuming TaskContext
 export const useTasks = () => useContext(TaskContext);

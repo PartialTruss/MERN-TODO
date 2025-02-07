@@ -19,10 +19,12 @@ const LoginForm = () => {
   };
 
   const validationSchema = Yup.object({
-    email: Yup.string().email("Invalid email format").required("Required"),
+    email: Yup.string()
+      .email("Invalid email format")
+      .required("Email is Required"),
     password: Yup.string()
       .min(6, "Password must be at least 6 characters")
-      .required("Required"),
+      .required("Password is Required"),
   });
 
   const onSubmit = async (values, { setSubmitting }) => {
@@ -40,7 +42,7 @@ const LoginForm = () => {
 
         setTimeout(() => {
           navigate("/home");
-        }, 2000);
+        }, 1000);
       }
     } catch (error) {
       toast.error("Login failed! Please try again...");
@@ -62,8 +64,15 @@ const LoginForm = () => {
           validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
-          {({ values, handleChange, handleBlur, isSubmitting }) => (
-            <Form className="w-full flex flex-col gap-8 mt-3">
+          {({
+            values,
+            handleChange,
+            handleBlur,
+            isSubmitting,
+            touched,
+            errors,
+          }) => (
+            <Form className="w-full flex flex-col gap-7 mt-3">
               <AuthInput
                 label="Email"
                 placeholdertext="Enter your email"
@@ -73,6 +82,7 @@ const LoginForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 icon="mail.svg"
+                error={touched.email && errors.email}
               />
               <AuthInput
                 label="Password"
@@ -83,14 +93,18 @@ const LoginForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 icon="lock.svg"
+                error={touched.password && errors.password}
               />
 
               <AuthButton
                 text={isSubmitting ? "Logging..." : "Login"}
                 isdisabled={isSubmitting ? true : false}
               />
-              <section className=" ml-1 text-sm opacity-50 font-semibold">
-                No Account? <Link to="/signup">Create one!</Link>
+              <section className=" ml-1 text-sm opacity-50 mb-5">
+                <p>
+                  {" "}
+                  No Account? <Link to="/signup">Create one!</Link>
+                </p>
               </section>
               <Toaster position="top-left" reverseOrder={false} />
             </Form>

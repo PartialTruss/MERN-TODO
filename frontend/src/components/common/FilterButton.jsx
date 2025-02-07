@@ -1,27 +1,32 @@
-import { Box, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { SortSharp } from "@mui/icons-material";
+import { Box, FormControl, MenuItem, Select } from "@mui/material";
 
 const FilterButton = ({ filterValue, handleFunction }) => {
   return (
-    <div>
-      <Box mb={2} display="flex" justifyContent="center">
-        <ToggleButtonGroup
+    <Box display="flex" justifyContent="center">
+      <FormControl size="small">
+        <Select
           value={filterValue}
-          exclusive
-          onChange={handleFunction}
-          aria-label="task filter"
+          onChange={(e) => handleFunction(e.target.value)}
+          displayEmpty
+          sx={{
+            bgcolor: "#F4F1DE",
+            paddingRight: "10px",
+          }}
+          IconComponent={SortSharp}
         >
-          <ToggleButton value="all" aria-label="all tasks">
-            All
-          </ToggleButton>
-          <ToggleButton value="completed" aria-label="completed tasks">
-            Completed
-          </ToggleButton>
-          <ToggleButton value="notCompleted" aria-label="not completed tasks">
-            Not Completed
-          </ToggleButton>
-        </ToggleButtonGroup>
-      </Box>
-    </div>
+          <MenuItem value="all">
+            <p>All</p>
+          </MenuItem>
+          <MenuItem value="completed">
+            <p>Completed</p>
+          </MenuItem>
+          <MenuItem value="notCompleted">
+            <p>Not Completed</p>
+          </MenuItem>
+        </Select>
+      </FormControl>
+    </Box>
   );
 };
 

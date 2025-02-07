@@ -12,7 +12,7 @@ const CheckBox = ({ isChecked, changeStatus, disabled }) => {
   return (
     <div>
       <div className="checkbox-wrapper-12">
-        <div className="cbx">
+        <div className={`cbx`}>
           <input
             type="checkbox"
             id="cbx-12"

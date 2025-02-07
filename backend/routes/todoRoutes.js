@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  archiveTodo,
   completedTodo,
   createTodo,
   deleteTodo,
@@ -14,6 +15,8 @@ router.get("/", authMiddleware, getTodos);
 router.post("/", authMiddleware, createTodo);
 router.put("/:id", authMiddleware, updateTodo);
 router.put("/:id/completed", authMiddleware, completedTodo);
+router.put("/:id/starred", authMiddleware, completedTodo);
+router.put("/:id/archive", authMiddleware, archiveTodo);
 router.delete("/:id", authMiddleware, deleteTodo);
 
 export default router;

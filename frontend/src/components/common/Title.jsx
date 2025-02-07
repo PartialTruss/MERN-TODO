@@ -1,10 +1,11 @@
-import React from "react";
+import { useTranslation } from "react-i18next";
 
 const Title = ({ section_title }) => {
+  const { t } = useTranslation();
   return (
-    <div>
-      <h1 className="text-[#F4F1DE] text-2xl mt-3">{section_title}</h1>
-    </div>
+    <h2 className="text-[#F4F1DE] text-xl sm:text-2xl mt-3">
+      {t(section_title)}
+    </h2>
   );
 };
 

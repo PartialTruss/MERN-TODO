@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import ArchivePage from "../pages/ArchivePage";
 import ResponsiveDrawer from "../pages/Dash";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
@@ -25,6 +26,7 @@ const RoutesConfig = () => {
         <Route path="/quotes" element={<QuotesPage />} />
         <Route path="/statistics" element={<StatisticPage />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/archives" element={<ArchivePage />} />
       </Route>
     </Routes>
   );

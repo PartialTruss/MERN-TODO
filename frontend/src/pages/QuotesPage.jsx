@@ -3,7 +3,7 @@ import QuotesList from "../components/quotes/QuotesList";
 
 const QuotesPage = () => {
   return (
-    <div>
+    <div className="h-screen">
       <Title section_title="Daily quotes are here!" />
       <QuotesList />
     </div>
