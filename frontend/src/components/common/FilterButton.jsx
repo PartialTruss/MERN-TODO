@@ -1,7 +1,10 @@
 import { SortSharp } from "@mui/icons-material";
 import { Box, FormControl, MenuItem, Select } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const FilterButton = ({ filterValue, handleFunction }) => {
+  const { t } = useTranslation();
+
   return (
     <Box display="flex" justifyContent="center">
       <FormControl size="small">
@@ -16,13 +19,13 @@ const FilterButton = ({ filterValue, handleFunction }) => {
           IconComponent={SortSharp}
         >
           <MenuItem value="all">
-            <p>All</p>
+            <p>{t("All")}</p>
           </MenuItem>
           <MenuItem value="completed">
-            <p>Completed</p>
+            <p>{t("Completed")}</p>
           </MenuItem>
           <MenuItem value="notCompleted">
-            <p>Not Completed</p>
+            <p>{t("Not Completed")}</p>
           </MenuItem>
         </Select>
       </FormControl>

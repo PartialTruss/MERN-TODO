@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Form, Formik } from "formik";
 import { toast, Toaster } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { useTasks } from "../../context/Taskcontext";
@@ -12,6 +13,8 @@ import Title from "./Title";
 const LoginForm = () => {
   const navigate = useNavigate();
   const { loadTasks } = useTasks();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === "fa";
 
   const initialValues = {
     email: "",
@@ -103,7 +106,8 @@ const LoginForm = () => {
               <section className=" ml-1 text-sm opacity-50 mb-5">
                 <p>
                   {" "}
-                  No Account? <Link to="/signup">Create one!</Link>
+                  {t("No Account?")}{" "}
+                  <Link to="/signup">{t("Create one!")}</Link>
                 </p>
               </section>
               <Toaster position="top-left" reverseOrder={false} />

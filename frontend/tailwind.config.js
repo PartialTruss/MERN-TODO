@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        rtl: ["IRSANS", "sans-serif"], // Ensure a fallback font
+        rtl: ["IRSANS", "sans-serif"],
       },
     },
   },
@@ -15,7 +15,7 @@ module.exports = {
         'html[dir="rtl"]': {
           direction: "rtl",
           textAlign: "right",
-          fontFamily: "'IRSANS', sans-serif", // Use raw CSS font-family
+          fontFamily: "IRSANS, sans-serif",
         },
         'html[dir="ltr"]': {
           direction: "ltr",

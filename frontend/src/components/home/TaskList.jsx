@@ -188,7 +188,7 @@ const TaskList = ({ filter }) => {
                               />
                             </ListItemIcon>
                             <ListItemText className="text-blue-500">
-                              Archive
+                              {t("Archive")}
                             </ListItemText>
                           </MenuItem>
                           <MenuItem onClick={() => handleDelete(task._id)}>
@@ -199,7 +199,7 @@ const TaskList = ({ filter }) => {
                               />
                             </ListItemIcon>
                             <ListItemText className="text-red-600">
-                              Delete
+                              {t("Delete")}
                             </ListItemText>
                           </MenuItem>
                         </MenuList>

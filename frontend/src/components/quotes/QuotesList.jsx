@@ -40,7 +40,7 @@ const QuotesList = () => {
   };
 
   return (
-    <div className="mt-10">
+    <div className="mt-10 ">
       {error && <p className="text-red-500">{error}</p>}
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {currentQuotes.map((item, id) => (

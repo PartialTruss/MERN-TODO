@@ -1,4 +1,5 @@
 import { Box, Button, Container, Modal, TextField } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import TaskDatePicker from "../../components/home/DatePicker";
 
 const TaskModal = ({
@@ -10,6 +11,7 @@ const TaskModal = ({
   setTaskDate,
   handleSave,
 }) => {
+  const { t } = useTranslation();
   return (
     <Modal open={open} onClose={handleClose}>
       <Container
@@ -19,7 +21,7 @@ const TaskModal = ({
       >
         <Box display="flex" flexDirection="column" gap="20px" padding="20px">
           <h1 className="text-xl">
-            {taskTitle ? "Edit Task" : "Add New Task"}
+            {taskTitle ? t("Edit Task") : t("Add New Task")}
           </h1>
           <section className="flex flex-col gap-5">
             <TextField

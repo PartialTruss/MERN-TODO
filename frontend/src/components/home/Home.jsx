@@ -72,7 +72,7 @@ const Home = () => {
             color: "#3D405B",
           }}
         >
-          <p>{t("New Task")}</p>
+          <p className="pr-1">{t("New Task")}</p>
         </Button>
         <FilterButton
           filterValue={filter}
@@ -118,6 +118,18 @@ const Home = () => {
                   label={t("Description")}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
+                  fullWidth
+                  sx={{
+                    direction: isRTL ? "rtl" : "ltr",
+                    textAlign: isRTL ? "right" : "left",
+                    "& .MuiInputLabel-root": {
+                      right: isRTL ? 30 : "auto",
+                      left: isRTL ? "auto" : 0,
+                    },
+                    "& .MuiInputBase-root": {
+                      textAlign: isRTL ? "right" : "left",
+                    },
+                  }}
                 />
               </section>
 

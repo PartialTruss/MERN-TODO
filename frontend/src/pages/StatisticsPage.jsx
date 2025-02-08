@@ -3,7 +3,7 @@ import Statistics from "../components/statistics/Statistics";
 
 const StatisticsPage = () => {
   return (
-    <div className="h-screen">
+    <div className=" lg:h-screen p-5 lg:p-0">
       <Title section_title="Statistics" />
       <Statistics />
     </div>

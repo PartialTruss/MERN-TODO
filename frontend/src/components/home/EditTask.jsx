@@ -11,6 +11,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useTasks } from "../../context/Taskcontext";
 import TaskDatePicker from "./DatePicker";
 
@@ -26,6 +27,7 @@ const EditTask = ({ task, open, onCancel }) => {
   const [isEditingDescription, setIsEditingDescription] = useState(false);
   const [isEditingDueDate, setIsEditingDueDate] = useState(false);
   const [isEditingDueTime, setIsEditingDueTime] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (task) {
@@ -77,9 +79,8 @@ const EditTask = ({ task, open, onCancel }) => {
         }}
       >
         <Box display="flex" flexDirection="column" gap="20px">
-          <h1 className="text-xl">Task Detail</h1>
+          <h1 className="text-xl">{t("Task Detail")}</h1>
           <section className="flex flex-col gap-5">
-            {/* Task Title */}
             <Box
               onClick={() => setIsEditingTitle(true)}
               sx={{ cursor: "pointer" }}
@@ -175,14 +176,14 @@ const EditTask = ({ task, open, onCancel }) => {
               onClick={handleSave}
               sx={{ flexGrow: 1, backgroundColor: "#81B29A" }}
             >
-              Save
+              {t("Save")}
             </Button>
             <Button
               variant="contained"
               onClick={onCancel}
               sx={{ flexGrow: 1, backgroundColor: "#C46A64" }}
             >
-              Cancel
+              {t("Cancel")}
             </Button>
           </Box>
         </Box>

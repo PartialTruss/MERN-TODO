@@ -17,7 +17,7 @@ ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const Statistics = () => {
   const { t, i18n } = useTranslation();
-  const isRTL = i18n.language === "fa"; 
+  const isRTL = i18n.language === "fa";
 
   const { tasks } = useTasks();
   const [completedTasksCount, setCompletedTasksCount] = useState(0);
@@ -91,7 +91,7 @@ const Statistics = () => {
           TasksCount={starredTaskCount}
         />
       </div>
-      <div className="w-full mt-10">
+      <div className=" w-11/12 lg:w-full mt-10">
         <Bar data={data} options={options} className="h-96" />
       </div>
     </>
