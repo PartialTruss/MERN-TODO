@@ -1,9 +1,9 @@
 import axios from "axios";
 import { getToken } from "../utils/token_manager";
 
-// Use the environment variable or fall back to localhost in development
+// Use the environment variable (VITE_ prefix is required for Vite)
 const API = axios.create({
-  baseURL: import.meta.env.REACT_APP_API_URL,
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000", // fallback for local dev
 });
 
 API.interceptors.request.use((req) => {
