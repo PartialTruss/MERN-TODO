@@ -77,8 +77,8 @@ const LoginForm = () => {
           }) => (
             <Form className="w-full flex flex-col gap-7 mt-3">
               <AuthInput
-                label="Email"
-                placeholdertext="Enter your email"
+                label={t("Email")}
+                placeholdertext={t("Enter your Email")}
                 input_type="email"
                 name="email"
                 value={values.email}
@@ -88,8 +88,8 @@ const LoginForm = () => {
                 error={touched.email && errors.email}
               />
               <AuthInput
-                label="Password"
-                placeholdertext="Enter your password"
+                label={t("Password")}
+                placeholdertext={t("Enter your password")}
                 input_type="password"
                 name="password"
                 value={values.password}
@@ -100,7 +100,7 @@ const LoginForm = () => {
               />
 
               <AuthButton
-                text={isSubmitting ? "Logging..." : "Login"}
+                text={isSubmitting ? t("Logging...") : t("Login")}
                 isdisabled={isSubmitting ? true : false}
               />
               <section className=" ml-1 text-sm opacity-50 mb-5">

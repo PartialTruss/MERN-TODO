@@ -16,6 +16,12 @@ i18n.use(initReactI18next).init({
     },
     fa: {
       translation: {
+        Email: "ایمیل",
+        Password: "رمز عبور",
+        Login: "ورود",
+        "Logging...": "...ورود",
+        "Enter your password": "رمز عبور خود را وارد کنید",
+        "Enter your Email": "ایمیل خود را وارد کنید",
         "No Account?": "حساب ندارید؟",
         "Create one!": "ایجاد کنید!",
         Home: "خانه",
