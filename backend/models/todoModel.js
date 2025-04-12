@@ -29,12 +29,12 @@ const todoSchema = new mongoose.Schema(
       required: false,
     },
     dueTime: {
-      type: String, // Ensure it's stored as a string in "HH:mm" format
+      type: String,
       required: false,
     },
     description: {
       type: String,
-      required: true,
+      required: false,
     },
   },
 

@@ -5,7 +5,6 @@ import User from "../models/userModel.js";
 
 const router = express.Router();
 
-// Login route
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -33,7 +32,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// Signup route
 router.post("/signup", async (req, res) => {
   const { email, password, username } = req.body;
   try {
@@ -47,7 +45,6 @@ router.post("/signup", async (req, res) => {
     const newUser = new User({ email, password: hashedPassword, username });
     await newUser.save();
 
-    // Generate JWT token
     const token = jwt.sign(
       { id: newUser._id, email: newUser.email, username: newUser.username }, // Payload
       process.env.JWT_SECRET, // Secret key

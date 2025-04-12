@@ -45,12 +45,11 @@ export const getTodos = async (req, res) => {
     const userId = req.user.id;
     const { archived } = req.query;
 
-    // If `archived=true`, fetch only archived todos, otherwise fetch active todos
     const filter = { userId };
     if (archived === "true") {
       filter.archived = true;
     } else {
-      filter.archived = { $ne: true }; // Default: exclude archived tasks
+      filter.archived = { $ne: true }; 
     }
 
     const todos = await Todo.find(filter).sort({ createdAt: -1 });
@@ -152,10 +151,9 @@ export const archiveTodo = async (req, res) => {
     const { id } = req.params;
     const { archived } = req.body;
 
-    // Make sure you're actually sending the `archived` field
     const updatedTodo = await Todo.findByIdAndUpdate(
       id,
-      { archived }, // Set the `archived` field to the value passed in the body
+      { archived }, 
       { new: true }
     );
 
