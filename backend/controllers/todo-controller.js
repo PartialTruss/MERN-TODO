@@ -1,7 +1,5 @@
-import Todo from "../models/todoModel.js";
-
-// Utility function to validate time format (HH:mm)
-const validateTimeFormat = (time) => /^([01]\d|2[0-3]):([0-5]\d)$/.test(time);
+import Todo from "../models/todo-model.js";
+import { validateTimeFormat } from "../utils/utils.js";
 
 // Create a new todo
 export const createTodo = async (req, res) => {
@@ -26,7 +24,7 @@ export const createTodo = async (req, res) => {
       starred: !!starred,
       dueDate: dueDate ? new Date(dueDate) : undefined,
       dueTime,
-      description, // Store as HH:mm
+      description,
     });
 
     const savedTodo = await todo.save();
@@ -49,7 +47,7 @@ export const getTodos = async (req, res) => {
     if (archived === "true") {
       filter.archived = true;
     } else {
-      filter.archived = { $ne: true }; 
+      filter.archived = { $ne: true };
     }
 
     const todos = await Todo.find(filter).sort({ createdAt: -1 });
@@ -153,7 +151,7 @@ export const archiveTodo = async (req, res) => {
 
     const updatedTodo = await Todo.findByIdAndUpdate(
       id,
-      { archived }, 
+      { archived },
       { new: true }
     );
 

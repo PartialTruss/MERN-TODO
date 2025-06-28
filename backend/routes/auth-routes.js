@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import express from "express";
-import jwt from "jsonwebtoken"; // Import JWT library
-import User from "../models/userModel.js";
+import jwt from "jsonwebtoken";
+import User from "../models/user-model.js";
 
 const router = express.Router();
 
@@ -19,11 +19,10 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    // Generate JWT token
     const token = jwt.sign(
-      { id: user._id, email: user.email, username: user.username }, // Payload
-      process.env.JWT_SECRET, // Secret key
-      { expiresIn: "2h" } // Token expiration
+      { id: user._id, email: user.email, username: user.username },
+      process.env.JWT_SECRET,
+      { expiresIn: "2h" }
     );
 
     res.status(200).json({ message: "Login successful", token });
@@ -46,9 +45,9 @@ router.post("/signup", async (req, res) => {
     await newUser.save();
 
     const token = jwt.sign(
-      { id: newUser._id, email: newUser.email, username: newUser.username }, // Payload
-      process.env.JWT_SECRET, // Secret key
-      { expiresIn: "2h" } // Token expiration
+      { id: newUser._id, email: newUser.email, username: newUser.username },
+      process.env.JWT_SECRET,
+      { expiresIn: "2h" }
     );
 
     res.status(201).json({ message: "User created successfully", token });
