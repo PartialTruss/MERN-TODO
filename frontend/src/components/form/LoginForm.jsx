@@ -33,7 +33,7 @@ const LoginForm = () => {
   const onSubmit = async (values, { setSubmitting }) => {
     try {
       const response = await axios.post(
-        "https://storied-tanuki-dcadd0.netlify.app/login",
+        "https://mern-todo-wvgj.onrender.com/api/auth/login",
         values
       );
 
