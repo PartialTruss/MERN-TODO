@@ -17,7 +17,7 @@ app.use(helmet());
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://celadon-pika-a71aae.netlify.app/login",
+  "https://storied-tanuki-dcadd0.netlify.app",
 ];
 
 app.use(
