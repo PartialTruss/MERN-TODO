@@ -29,7 +29,7 @@ const SignupForm = () => {
   const onSubmit = async (values, { setSubmitting }) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/signup",
+        "https://storied-tanuki-dcadd0.netlify.app/signup",
         values
       );
 

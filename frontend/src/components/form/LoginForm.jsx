@@ -33,7 +33,7 @@ const LoginForm = () => {
   const onSubmit = async (values, { setSubmitting }) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://storied-tanuki-dcadd0.netlify.app/login",
         values
       );
 
