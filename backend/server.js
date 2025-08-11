@@ -17,7 +17,7 @@ app.use(helmet());
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://coruscating-buttercream-a2c519.netlify.app",
+  "https://wonderful-halva-2062ce.netlify.app",
 ];
 
 app.use(
